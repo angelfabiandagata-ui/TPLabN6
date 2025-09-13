@@ -16,6 +16,7 @@ public class Gestionproductosjf extends javax.swing.JFrame {
     
     public Gestionproductosjf() {
         initComponents();
+        cargarCategoriasPredeterminadas();
     }
     
     
@@ -24,19 +25,8 @@ public class Gestionproductosjf extends javax.swing.JFrame {
     //------------------------------------------------
     
     //categorias
-    JComboBox<String> categorias = new JComboBox<>();
-    HashSet<String>categoriassimple = new HashSet<>();
-    
-    //llenar categorias (opcion extra que no se pide)
-    public void llenarCategorias(){
-    
-        for (String string : categoriassimple) {
-            categorias.addItem(string);
-        }
-        
-    CmbCategoria.setModel(categorias.getModel());
-    }
-    
+     JComboBox<String> categorias = new JComboBox<>();      
+     
     //llenar categorias como pide el ejercicio
     public void cargarCategoriasPredeterminadas(){
     
@@ -44,8 +34,9 @@ public class Gestionproductosjf extends javax.swing.JFrame {
     categorias.addItem("Limpieza");
     categorias.addItem("Farmacia");
     categorias.addItem("Ropa");
-    categorias.addItem("Perfumeria");       
+    categorias.addItem("Perfumeria");    
     
+    CmbCategoria.setModel(categorias.getModel());
     }
 
 
@@ -116,7 +107,6 @@ public class Gestionproductosjf extends javax.swing.JFrame {
             }
         });
 
-        CmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "no somos caballos" ,"somos humanos", "y los humanossomos", "......" }));
         CmbCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CmbCategoriaActionPerformed(evt);

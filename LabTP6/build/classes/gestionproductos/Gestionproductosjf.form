@@ -212,11 +212,6 @@
         <Component class="javax.swing.JTextField" name="TxtNom">
         </Component>
         <Component class="javax.swing.JComboBox" name="CmbCategoria">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;no somos caballos&quot; ,&quot;somos humanos&quot;, &quot;y los humanossomos&quot;, &quot;......&quot; })" type="code"/>
-            </Property>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CmbCategoriaActionPerformed"/>
           </Events>

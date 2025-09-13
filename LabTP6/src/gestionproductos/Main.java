@@ -12,8 +12,12 @@ public class Main {
     
     public static void main(String[] args) {
         
-        
-        
+    Gestionproductosjf gestion = new Gestionproductosjf();    
+    
+    gestion.cargarCategoriasPredeterminadas();
+    
+    gestion.setVisible(true);
+    
         
         
         
