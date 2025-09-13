@@ -14,9 +14,8 @@ public class Main {
         
     Gestionproductosjf gestion = new Gestionproductosjf();    
     
-    gestion.cargarCategoriasPredeterminadas();
-    
     gestion.setVisible(true);
+    
     
         
         

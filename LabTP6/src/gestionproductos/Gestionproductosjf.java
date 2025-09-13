@@ -6,6 +6,8 @@ package gestionproductos;
 
 import java.util.HashSet;
 import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +19,9 @@ public class Gestionproductosjf extends javax.swing.JFrame {
     public Gestionproductosjf() {
         initComponents();
         cargarCategoriasPredeterminadas();
+        cargarProductosDeterminados();
+        llenarTablas();
+        
     }
     
     
@@ -25,7 +30,13 @@ public class Gestionproductosjf extends javax.swing.JFrame {
     //------------------------------------------------
     
     //categorias
-     JComboBox<String> categorias = new JComboBox<>();      
+     JComboBox<String> categorias = new JComboBox<>();
+     
+    //tablas
+     String[][]Tablas;
+     
+    //productos 
+     HashSet<Productos>productos = new HashSet<>();
      
     //llenar categorias como pide el ejercicio
     public void cargarCategoriasPredeterminadas(){
@@ -38,6 +49,45 @@ public class Gestionproductosjf extends javax.swing.JFrame {
     
     CmbCategoria.setModel(categorias.getModel());
     }
+    
+    //cargar productos predeterminados
+    public void cargarProductosDeterminados(){
+    Productos p1 = new Productos("Harina","comestible",699.9);
+    Productos p2 = new Productos("Lavandina","Limpieza",1550.9);
+    Productos p3 = new Productos("Uvasal","Farmacia",199.9);
+    Productos p4 = new Productos("Medias A Lunares","Ropa",2499.9);
+    Productos p5 = new Productos("Carola Herrera","Perfumeria",14599.9);
+    
+    productos.add(p1); productos.add(p2); productos.add(p3); productos.add(p4); productos.add(p5);
+    }
+    
+    public void llenarTablas() {
+    Tablas = new String[productos.size()][3];    
+    // filas = cantidad de productos
+    int f = 0;
+
+    for (Productos producto : productos) {
+        Tablas[f][0] = producto.getNombre();
+        Tablas[f][1] = producto.getCategoria();
+        Tablas[f][2] = String.valueOf(producto.getPrecio());
+        f++;
+    }
+
+    // se crean columnas
+    String[] columnas = {"Nombre", "Categoría", "Precio"};
+
+    // crear modelo con la matriz y columnas
+    DefaultTableModel modelo = new DefaultTableModel(Tablas, columnas);
+
+    // asignar modelo al JTable (jtproductos ya existe en tu JFrame)
+    jtproductos.setModel(modelo);
+}
+
+
+    
+        
+        
+    
 
 
     /**
@@ -51,7 +101,7 @@ public class Gestionproductosjf extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtproductos = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -69,7 +119,7 @@ public class Gestionproductosjf extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Gestion de productos");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtproductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -88,7 +138,7 @@ public class Gestionproductosjf extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtproductos);
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 204));
 
@@ -262,6 +312,6 @@ public class Gestionproductosjf extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jtproductos;
     // End of variables declaration//GEN-END:variables
 }
