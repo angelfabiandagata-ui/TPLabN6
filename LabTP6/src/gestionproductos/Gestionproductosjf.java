@@ -4,18 +4,50 @@
  */
 package gestionproductos;
 
+import java.util.HashSet;
+import javax.swing.JComboBox;
+
 /**
  *
  * @author Ema
  */
 public class Gestionproductosjf extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Gestionproductosjf
-     */
+    
     public Gestionproductosjf() {
         initComponents();
     }
+    
+    
+    //------------------------------------------------
+    // codigo hecho a mano
+    //------------------------------------------------
+    
+    //categorias
+    JComboBox<String> categorias = new JComboBox<>();
+    HashSet<String>categoriassimple = new HashSet<>();
+    
+    //llenar categorias (opcion extra que no se pide)
+    public void llenarCategorias(){
+    
+        for (String string : categoriassimple) {
+            categorias.addItem(string);
+        }
+        
+    CmbCategoria.setModel(categorias.getModel());
+    }
+    
+    //llenar categorias como pide el ejercicio
+    public void cargarCategoriasPredeterminadas(){
+    
+    categorias.addItem("Comestible");
+    categorias.addItem("Limpieza");
+    categorias.addItem("Farmacia");
+    categorias.addItem("Ropa");
+    categorias.addItem("Perfumeria");       
+    
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
