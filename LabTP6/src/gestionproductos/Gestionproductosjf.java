@@ -270,28 +270,35 @@ public class Gestionproductosjf extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActionPerformed
-         String nombre = TxtNom.getText();
-         String categoria = (String) CmbCategoria.getSelectedItem();
-         String precioTxt = txtPrecio.getText().trim();
-         
-         try {
-            Double precio = Double.parseDouble(txtPrecio.getText());
+        
+        //pedir rellenar campos si estan vacios
+        if (TxtNom.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Introduzca un Nombre", "Error", JOptionPane.ERROR_MESSAGE);
+    } else if (txtPrecio.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Introduzca un Precio", "Error", JOptionPane.ERROR_MESSAGE);
+    } else 
+    
+         //agregar producto
+    {
+        String nombre = TxtNom.getText().trim();
+        String categoria = (String) CmbCategoria.getSelectedItem();
+        String precioTxt = txtPrecio.getText().trim();
+
+        try {
+            Double precio = Double.parseDouble(precioTxt);
             Productos nuevoProducto = new Productos(nombre, categoria, precio);
             productos.add(nuevoProducto);
             llenarTablas();
-             JOptionPane.showMessageDialog(this, "Producto Agregado Correctamente :)");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Ingrese numeros en precio!!" ,"Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Producto agregado correctamente :)");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese solo números en precio!!", "Error", JOptionPane.ERROR_MESSAGE);
         }
-         
-    
-    
 
-    // Limpiar 
-    
-    TxtNom.setText("");
-    txtPrecio.setText("");
-    TxtNom.requestFocus();
+        // Limpiar campos
+        TxtNom.setText("");
+        txtPrecio.setText("");
+        TxtNom.requestFocus();
+    }
     }//GEN-LAST:event_BtnAgregarActionPerformed
 
     
