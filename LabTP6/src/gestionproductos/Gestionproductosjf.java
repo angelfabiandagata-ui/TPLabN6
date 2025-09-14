@@ -108,7 +108,7 @@ public class Gestionproductosjf extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        Txtprom = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
         TxtNom = new javax.swing.JTextField();
         CmbCategoria = new javax.swing.JComboBox<>();
         BtnAgregar = new javax.swing.JButton();
@@ -162,9 +162,9 @@ public class Gestionproductosjf extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4.setText("Precio ($)");
 
-        Txtprom.addActionListener(new java.awt.event.ActionListener() {
+        txtPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtpromActionPerformed(evt);
+                txtPrecioActionPerformed(evt);
             }
         });
 
@@ -200,7 +200,7 @@ public class Gestionproductosjf extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Txtprom, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(BtnAgregar)
                 .addGap(34, 34, 34))
@@ -223,7 +223,7 @@ public class Gestionproductosjf extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(Txtprom, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36))
         );
 
@@ -270,23 +270,35 @@ public class Gestionproductosjf extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActionPerformed
-         String nomrbre = TxtNom.getText();
+         String nombre = TxtNom.getText();
          String categoria = (String) CmbCategoria.getSelectedItem();
+         String precioTxt = txtPrecio.getText().trim();
          
          try {
-            Double precio = Double.parseDouble(Txtprom.getText());
-            Productos nuevoProducto = new Productos(nomrbre, categoria, precio);
+            Double precio = Double.parseDouble(txtPrecio.getText());
+            Productos nuevoProducto = new Productos(nombre, categoria, precio);
             productos.add(nuevoProducto);
             llenarTablas();
              JOptionPane.showMessageDialog(this, "Producto Agregado Correctamente :)");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ingrese numeros en precio!!" ,"Error", JOptionPane.ERROR_MESSAGE);
         }
+         
+    
+    
+
+    // Limpiar 
+    
+    TxtNom.setText("");
+    txtPrecio.setText("");
+    TxtNom.requestFocus();
     }//GEN-LAST:event_BtnAgregarActionPerformed
 
-    private void TxtpromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtpromActionPerformed
+    
+    
+    private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtpromActionPerformed
+    }//GEN-LAST:event_txtPrecioActionPerformed
 
     private void CmbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmbCategoriaActionPerformed
 
@@ -337,7 +349,6 @@ public class Gestionproductosjf extends javax.swing.JFrame {
     private javax.swing.JButton BtnAgregar;
     private javax.swing.JComboBox<String> CmbCategoria;
     private javax.swing.JTextField TxtNom;
-    private javax.swing.JTextField Txtprom;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -346,5 +357,6 @@ public class Gestionproductosjf extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtproductos;
+    private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 }
